@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  wordpress:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    environment:
+      WORDPRESS_DB_HOST: ${DB_HOST:-db}
+      WORDPRESS_DB_USER: ${DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-wordpress}
+      WORDPRESS_DB_NAME: ${DB_NAME:-wordpress}
+      WORDPRESS_DEBUG: ${WP_DEBUG:-true}
+      WORDPRESS_DEBUG_LOG: ${WP_DEBUG_LOG:-true}
+      WORDPRESS_DEBUG_DISPLAY: ${WP_DEBUG_DISPLAY:-false}
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
+      - ./wp-config.php:/var/www/html/wp-config.php
+    depends_on:
+      - db
+    networks:
+      - wp-network
+
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-wordpress}
+      MYSQL_USER: ${DB_USER:-wordpress}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-wordpress}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - wp-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: ${DB_USER:-wordpress}
+      PMA_PASSWORD: ${DB_PASSWORD:-wordpress}
+    depends_on:
+      - db
+    networks:
+      - wp-network
+    profiles:
+      - dev
+
+volumes:
+  wordpress_data:
+  db_data:
+
+networks:
+  wp-network:
+    driver: bridge

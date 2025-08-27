@@ -1,0 +1,25 @@
+{
+  "name": "wordpress-coolify-template",
+  "version": "1.0.0",
+  "description": "WordPress development template for Coolify deployment",
+  "scripts": {
+    "dev": "docker-compose up -d",
+    "dev:with-phpmyadmin": "docker-compose --profile dev up -d",
+    "stop": "docker-compose down",
+    "build": "./build.sh",
+    "build:theme": "cd wp-content/themes/custom && npm run build",
+    "build:plugin": "cd wp-content/plugins/custom-blocks && npm run build",
+    "install:theme": "cd wp-content/themes/custom && npm install",
+    "install:plugin": "cd wp-content/plugins/custom-blocks && npm install",
+    "install:all": "npm run install:theme && npm run install:plugin",
+    "lint": "npm run lint:theme && npm run lint:plugin",
+    "lint:theme": "cd wp-content/themes/custom && npm run lint:css && npm run lint:js",
+    "lint:plugin": "cd wp-content/plugins/custom-blocks && npm run lint:css && npm run lint:js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

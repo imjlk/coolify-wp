@@ -1,0 +1,66 @@
+/**
+ * Editor styles for custom blocks
+ */
+
+.hero-block-editor {
+  padding: 20px;
+  border: 2px dashed #ddd;
+  text-align: center;
+  
+  .hero-background {
+    margin-bottom: 20px;
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  
+  .hero-content {
+    h1 {
+      font-size: 2.5rem;
+      margin: 0 0 1rem;
+    }
+    
+    p {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+  }
+}
+
+.card-block-editor {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  
+  .card-image {
+    margin-bottom: 15px;
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+  }
+  
+  .card-content {
+    h3 {
+      font-size: 1.5rem;
+      margin: 0 0 1rem;
+    }
+    
+    p {
+      margin: 0 0 1rem;
+    }
+    
+    span {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #007cba;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+  }
+}

@@ -1,0 +1,69 @@
+# Environment files
+.env
+
+# WordPress core files
+/wp-admin/
+/wp-includes/
+/wp-content/index.php
+/wp-content/languages/
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+/wp-content/themes/twenty*/
+wp-*.php
+xmlrpc.php
+index.php
+license.txt
+readme.html
+
+# WordPress uploads
+/wp-content/uploads/
+
+# WordPress cache
+/wp-content/cache/
+/wp-content/advanced-cache.php
+/wp-content/wp-cache-config.php
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm
+
+# Build outputs
+/wp-content/themes/custom/assets/
+/wp-content/plugins/custom-blocks/build/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Docker
+.docker/
+
+# Backup files
+*.sql
+backup.sql
+
+# WordPress config backup
+wp-config-sample.php
